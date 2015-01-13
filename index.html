@@ -18,7 +18,10 @@
 
         <style>
             body {
-                padding-top: 80px;
+                padding-top:80px;
+            }
+            .scrolloff {
+                pointer-events:none;
             }
         </style>
 
@@ -43,6 +46,19 @@
 		            });
 	            })
             }(window.jQuery)
+        </script>
+        
+        <script>
+            $(document).ready(function () {
+                // you want to enable the pointer events only on click;
+                $('#locationmapcanvas').addClass('scrolloff'); // set the pointer events to none on doc ready
+                $('#locationmap').on('click', function () {
+                    $('#locationmapcanvas').removeClass('scrolloff'); // set the pointer events true on click
+                    });
+                // you want to disable pointer events when the mouse leave the canvas area;$("#map_canvas1").mouseleave(function () {
+                $('#locationmapcanvas').addClass('scrolloff'); // set the pointer events to none when mouse leaves the map area
+                });
+            });
         </script>
 
     </head>
@@ -200,7 +216,7 @@
                     <h1>Location</h1>
                     <br />
                     <div id="locationmap" class="embed-responsive embed-responsive-16by9">
-                        <iframe height="600" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=Dr.%20Christopher%20Herzog%2048439&zoom=12&key=AIzaSyDGyDyDlffUuk54NDl0xdi1tTmmkMXATJs"></iframe>
+                        <iframe id="locationmapcanvas" height="600" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=Dr.%20Christopher%20Herzog%2048439&zoom=12&key=AIzaSyDGyDyDlffUuk54NDl0xdi1tTmmkMXATJs"></iframe>
                     </div>
                     <br />
                     <div class="panel panel-default">
